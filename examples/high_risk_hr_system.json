@@ -1,0 +1,10 @@
+{
+  "name": "HR Resume Screening Assistant",
+  "description": "An AI system that evaluates candidate resumes for job matching and ranks them.",
+  "categories": ["employment_hr"],
+  "features": ["profiling"],
+  "exceptions": ["improves_human_activity"],
+  "gpai": {
+    "is_gpai": false
+  }
+}

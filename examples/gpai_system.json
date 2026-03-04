@@ -1,0 +1,11 @@
+{
+  "name": "Large Language Model v1",
+  "description": "A foundation model trained on massive amounts of data, capable of multiple tasks.",
+  "categories": [],
+  "features": ["generates_content"],
+  "exceptions": [],
+  "gpai": {
+    "is_gpai": true,
+    "flops": 1.5e25
+  }
+}

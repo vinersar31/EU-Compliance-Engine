@@ -1,0 +1,10 @@
+{
+  "name": "Social Scoring AI",
+  "description": "An AI system that evaluates citizens based on social behavior to give them a score.",
+  "categories": ["social_scoring"],
+  "features": ["profiling", "social_scoring"],
+  "exceptions": [],
+  "gpai": {
+    "is_gpai": false
+  }
+}

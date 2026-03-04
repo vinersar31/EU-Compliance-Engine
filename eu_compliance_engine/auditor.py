@@ -15,19 +15,32 @@ def audit_codebase(directory: str) -> Dict[str, Any]:
     }
 
     red_patterns = [
-        r"social_credit_score",
-        r"biometric_scraping"
+        r"(?i)\bsocial[_\s]credit[_\s]score\b",
+        r"(?i)\bsocial[_\s]scoring\b",
+        r"(?i)\bpredictive[_\s]policing\b",
+        r"(?i)\bbiometric[_\s]scraping\b",
+        r"(?i)\bscrape_faces\b",
+        r"(?i)\bsubliminal_manipulation\b",
+        r"(?i)\bvulnerability_exploitation\b"
     ]
 
     yellow_patterns = [
-        r"import face_recognition",
-        r"from sklearn import credit_predictor"
+        r"(?i)import\s+face_recognition\b",
+        r"(?i)from\s+sklearn(?:\.\w+)*\s+import\s+.*credit_predictor",
+        r"(?i)\bemotion[_\s]recognition\b",
+        r"(?i)\bbiometric[_\s]categorization\b",
+        r"(?i)\bresume[_\s]parser\b",
+        r"(?i)\bcandidate[_\s]screening\b",
+        r"(?i)\bcredit[_\s]scoring\b",
+        r"(?i)\bpredict_recidivism\b"
     ]
 
     blue_patterns = [
-        r"chatbot",
-        r"deepfake",
-        r"ai_generated"
+        r"(?i)\bchatbot\b",
+        r"(?i)\bdeepfake\b",
+        r"(?i)\bai[_\-]?generated\b",
+        r"(?i)import\s+openai\b",
+        r"(?i)from\s+transformers\s+import\s+.*AutoModelForCausalLM"
     ]
 
     for root, _, files in os.walk(directory):
@@ -41,7 +54,7 @@ def audit_codebase(directory: str) -> Dict[str, Any]:
                     content = f.read()
 
                     for pattern in red_patterns:
-                        if re.search(pattern, content, re.IGNORECASE):
+                        if re.search(pattern, content):
                             results["FLAG RED"].append(filepath)
                             if "This project is illegal in the EU." not in results["report"]:
                                 results["report"].append("This project is illegal in the EU.")
@@ -53,7 +66,7 @@ def audit_codebase(directory: str) -> Dict[str, Any]:
                                 results["report"].append("Annex III High-Risk warning")
 
                     for pattern in blue_patterns:
-                        if re.search(pattern, content, re.IGNORECASE):
+                        if re.search(pattern, content):
                             results["FLAG BLUE"].append(filepath)
                             if "Must label output as AI-Generated" not in results["report"]:
                                 results["report"].append("Must label output as AI-Generated")

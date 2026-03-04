@@ -2,6 +2,18 @@ import os
 import re
 from typing import Dict, List, Any
 
+def _generate_variations(base_terms: List[str]) -> List[str]:
+    """
+    Generates variations of base terms to catch different naming conventions
+    (e.g., camelCase, snake_case, space separated).
+    """
+    variations = []
+    for term in base_terms:
+        # Replace spaces or underscores with a regex that matches _, -, or space
+        flexible_term = re.sub(r'[\s_]+', r'[_\-\\s]+', term)
+        variations.append(rf"(?i)\b{flexible_term}\b")
+    return variations
+
 def audit_codebase(directory: str) -> Dict[str, Any]:
     """
     Scans a directory for specific high-risk and prohibited AI code patterns.
@@ -14,34 +26,58 @@ def audit_codebase(directory: str) -> Dict[str, Any]:
         "report": []
     }
 
-    red_patterns = [
-        r"(?i)\bsocial[_\s]credit[_\s]score\b",
-        r"(?i)\bsocial[_\s]scoring\b",
-        r"(?i)\bpredictive[_\s]policing\b",
-        r"(?i)\bbiometric[_\s]scraping\b",
-        r"(?i)\bscrape_faces\b",
-        r"(?i)\bsubliminal_manipulation\b",
-        r"(?i)\bvulnerability_exploitation\b"
+    red_base_terms = [
+        "social credit score",
+        "social scoring",
+        "predictive policing",
+        "biometric scraping",
+        "scrape faces",
+        "subliminal manipulation",
+        "vulnerability exploitation",
+        "mass surveillance",
+        "emotion recognition workplace",
+        "emotion recognition education"
     ]
 
-    yellow_patterns = [
+    yellow_base_terms = [
+        "emotion recognition",
+        "biometric categorization",
+        "resume parser",
+        "candidate screening",
+        "credit scoring",
+        "predict recidivism",
+        "critical infrastructure ai",
+        "medical device ai",
+        "law enforcement ai",
+        "border control ai",
+        "exam proctoring ai"
+    ]
+
+    blue_base_terms = [
+        "chatbot",
+        "deepfake",
+        "ai generated",
+        "generative ai",
+        "llm",
+        "large language model"
+    ]
+
+    red_patterns = _generate_variations(red_base_terms)
+    yellow_patterns = _generate_variations(yellow_base_terms)
+    blue_patterns = _generate_variations(blue_base_terms)
+
+    # Add explicit code-specific patterns that don't fit word boundaries well
+    yellow_patterns.extend([
         r"(?i)import\s+face_recognition\b",
-        r"(?i)from\s+sklearn(?:\.\w+)*\s+import\s+.*credit_predictor",
-        r"(?i)\bemotion[_\s]recognition\b",
-        r"(?i)\bbiometric[_\s]categorization\b",
-        r"(?i)\bresume[_\s]parser\b",
-        r"(?i)\bcandidate[_\s]screening\b",
-        r"(?i)\bcredit[_\s]scoring\b",
-        r"(?i)\bpredict_recidivism\b"
-    ]
+        r"(?i)from\s+sklearn(?:\.\w+)*\s+import\s+.*credit_predictor"
+    ])
 
-    blue_patterns = [
-        r"(?i)\bchatbot\b",
-        r"(?i)\bdeepfake\b",
-        r"(?i)\bai[_\-]?generated\b",
+    blue_patterns.extend([
         r"(?i)import\s+openai\b",
-        r"(?i)from\s+transformers\s+import\s+.*AutoModelForCausalLM"
-    ]
+        r"(?i)import\s+anthropic\b",
+        r"(?i)from\s+transformers\s+import\s+.*AutoModelForCausalLM",
+        r"(?i)from\s+langchain\b"
+    ])
 
     for root, _, files in os.walk(directory):
         for file in files:

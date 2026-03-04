@@ -1,6 +1,6 @@
 import json
 import sys
-from compliance_engine import ComplianceEngine
+from eu_compliance_engine.compliance_engine import ComplianceEngine
 
 def main():
     # Provide a sample AI system definition to generate a report

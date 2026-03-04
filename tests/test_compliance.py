@@ -1,5 +1,5 @@
 import unittest
-from compliance_engine import ComplianceEngine
+from eu_compliance_engine.compliance_engine import ComplianceEngine
 
 class TestComplianceEngine(unittest.TestCase):
 

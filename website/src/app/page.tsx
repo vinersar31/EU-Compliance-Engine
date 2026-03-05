@@ -1,7 +1,7 @@
 import React from 'react';
 import EUFlag from '../components/EUFlag';
 import LLMEvaluator from '../components/LLMEvaluator';
-import { FileText, ShieldAlert, Cpu, CheckCircle } from 'lucide-react';
+import { FileText, ShieldAlert, Cpu } from 'lucide-react';
 
 export default function Home() {
   return (

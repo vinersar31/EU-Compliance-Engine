@@ -46,5 +46,32 @@ class TestIntegration(unittest.TestCase):
         self.assertIn("## 4. General Purpose AI (GPAI) Models (Article 51-55)", report)
         self.assertIn("Standard GPAI:", report)
 
+    def test_prohibited_system_report(self):
+        sample_system = {
+            "name": "Citizen Scoring AI",
+            "description": "System that gives social credit scores to citizens.",
+            "categories": ["social_scoring"]
+        }
+        engine = ComplianceEngine(sample_system)
+        report = engine.generate_report()
+
+        self.assertIn("**Risk Level Classification:** Unacceptable Risk (Prohibited)", report)
+        self.assertIn("⚠️ **UNACCEPTABLE RISK: THIS SYSTEM IS BANNED.**", report)
+        self.assertIn("Matching Prohibited Categories:", report)
+        self.assertIn("- social_scoring", report)
+
+    def test_minimal_risk_system_report(self):
+        sample_system = {
+            "name": "Spam Filter",
+            "description": "Filters spam emails for internal corporate users.",
+            "categories": ["general_utility"]
+        }
+        engine = ComplianceEngine(sample_system)
+        report = engine.generate_report()
+
+        self.assertIn("**Risk Level Classification:** Minimal/No Risk", report)
+        self.assertIn("✅ No prohibited practices detected.", report)
+        self.assertIn("✅ System does not fall under High-Risk Annex III categories.", report)
+
 if __name__ == '__main__':
     unittest.main()

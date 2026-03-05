@@ -15,7 +15,11 @@ export default function LLMEvaluator() {
     setResult(null);
 
     try {
-      const response = await fetch('/api/evaluate', {
+      // Determine the API URL. For GitHub pages, it must point to an external Python server.
+      // Defaulting to a local server for development if NEXT_PUBLIC_API_URL isn't set.
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/evaluate';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +33,7 @@ export default function LLMEvaluator() {
 
       const data = await response.json();
 
-      if (data.error) {
+      if (data.error && !data.risk_level) {
          setResult({
             riskLevel: 'Error',
             color: 'text-red-600',
@@ -93,7 +97,7 @@ export default function LLMEvaluator() {
         bgColor: 'bg-red-50',
         icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
         flags: ['ERROR'],
-        summary: error.message || 'An unexpected error occurred during evaluation.',
+        summary: error.message || 'An unexpected error occurred during evaluation. The backend server might be down.',
         obligations: []
       });
     } finally {

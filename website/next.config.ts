@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "export",
-  // basePath: "/EU-Compliance-Engine",
+  output: "export",
+  basePath: "/EU-Compliance-Engine",
   images: {
     unoptimized: true,
   },

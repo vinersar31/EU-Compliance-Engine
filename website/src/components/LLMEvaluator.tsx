@@ -14,70 +14,95 @@ export default function LLMEvaluator() {
     setIsEvaluating(true);
     setResult(null);
 
-    // Simulate API call and evaluation time
-    setTimeout(() => {
-      let mockResult = {
-        riskLevel: 'Minimal Risk',
-        color: 'text-green-600',
-        bgColor: 'bg-green-50',
-        icon: <ShieldCheck className="w-6 h-6 text-green-600" />,
-        flags: ['FLAG GREEN'],
-        summary: 'Based on the description, this system poses minimal risk to citizens\' rights and safety.',
-        obligations: [
-          'No mandatory obligations under the EU AI Act.',
-          'Voluntary codes of conduct are encouraged.'
-        ]
-      };
+    try {
+      // Determine the API URL. For GitHub pages, it must point to an external Python server.
+      // Defaulting to a local server for development if NEXT_PUBLIC_API_URL isn't set.
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/evaluate';
 
-      const lowerDesc = description.toLowerCase();
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ description }),
+      });
 
-      // Simple mock logic for demonstration
-      if (lowerDesc.includes('biometric') || lowerDesc.includes('facial recognition') || lowerDesc.includes('law enforcement')) {
-        mockResult = {
-          riskLevel: 'Unacceptable Risk',
-          color: 'text-red-600',
-          bgColor: 'bg-red-50',
-          icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
-          flags: ['FLAG RED'],
-          summary: 'This system likely falls under the Prohibited AI practices of the EU AI Act.',
-          obligations: [
-            'Prohibited from being placed on the market or put into service in the EU.',
-            'Exceptions apply only in very narrow, strictly defined circumstances (e.g., targeted search for missing persons).'
-          ]
-        };
-      } else if (lowerDesc.includes('recruitment') || lowerDesc.includes('employment') || lowerDesc.includes('education') || lowerDesc.includes('credit')) {
-         mockResult = {
-          riskLevel: 'High Risk',
-          color: 'text-yellow-600',
-          bgColor: 'bg-yellow-50',
-          icon: <AlertTriangle className="w-6 h-6 text-yellow-600" />,
-          flags: ['FLAG YELLOW'],
-          summary: 'This system likely classifies as High-Risk under Annex III of the EU AI Act.',
-          obligations: [
-            'Mandatory Conformity Assessment required.',
-            'Implementation of a Risk Management System.',
-            'Data governance and quality requirements.',
-            'Human oversight measures must be in place.'
-          ]
-        };
-      } else if (lowerDesc.includes('chatbot') || lowerDesc.includes('deepfake') || lowerDesc.includes('generate')) {
-         mockResult = {
-          riskLevel: 'Transparency Risk',
-          color: 'text-blue-600',
-          bgColor: 'bg-blue-50',
-          icon: <Info className="w-6 h-6 text-blue-600" />,
-          flags: ['FLAG BLUE'],
-          summary: 'This system must comply with specific transparency obligations under Article 50.',
-          obligations: [
-            'Users must be informed they are interacting with an AI system.',
-            'Generated content (like deepfakes) must be clearly labeled as artificially generated.'
-          ]
-        };
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
       }
 
-      setResult(mockResult);
+      const data = await response.json();
+
+      if (data.error && !data.risk_level) {
+         setResult({
+            riskLevel: 'Error',
+            color: 'text-red-600',
+            bgColor: 'bg-red-50',
+            icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
+            flags: ['ERROR'],
+            summary: data.error,
+            obligations: []
+         });
+         return;
+      }
+
+      // Map backend response to UI format
+      let color = 'text-gray-600';
+      let bgColor = 'bg-gray-50';
+      let icon = <Info className="w-6 h-6 text-gray-600" />;
+      let flags: string[] = [];
+
+      const riskLower = (data.risk_level || '').toLowerCase();
+
+      if (riskLower.includes('minimal')) {
+        color = 'text-green-600';
+        bgColor = 'bg-green-50';
+        icon = <ShieldCheck className="w-6 h-6 text-green-600" />;
+        flags = ['FLAG GREEN'];
+      } else if (riskLower.includes('unacceptable') || riskLower.includes('prohibited')) {
+        color = 'text-red-600';
+        bgColor = 'bg-red-50';
+        icon = <AlertTriangle className="w-6 h-6 text-red-600" />;
+        flags = ['FLAG RED'];
+      } else if (riskLower.includes('high')) {
+        color = 'text-yellow-600';
+        bgColor = 'bg-yellow-50';
+        icon = <AlertTriangle className="w-6 h-6 text-yellow-600" />;
+        flags = ['FLAG YELLOW'];
+      } else if (riskLower.includes('transparency')) {
+        color = 'text-blue-600';
+        bgColor = 'bg-blue-50';
+        icon = <Info className="w-6 h-6 text-blue-600" />;
+        flags = ['FLAG BLUE'];
+      }
+
+      setResult({
+        riskLevel: data.risk_level,
+        color,
+        bgColor,
+        icon,
+        flags,
+        summary: data.reasoning,
+        obligations: [
+          ...(data.suggested_categories ? ['Categories: ' + data.suggested_categories.join(', ')] : []),
+          ...(data.suggested_features ? ['Features: ' + data.suggested_features.join(', ')] : [])
+        ].filter(Boolean)
+      });
+
+    } catch (error: any) {
+      console.error(error);
+      setResult({
+        riskLevel: 'Evaluation Failed',
+        color: 'text-red-600',
+        bgColor: 'bg-red-50',
+        icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
+        flags: ['ERROR'],
+        summary: error.message || 'An unexpected error occurred during evaluation. The backend server might be down.',
+        obligations: []
+      });
+    } finally {
       setIsEvaluating(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -88,7 +113,7 @@ export default function LLMEvaluator() {
           <h3 className="text-2xl font-bold">Interactive Evaluator</h3>
         </div>
         <p className="text-blue-100 text-sm">
-          Describe an AI system below to simulate an automated EU AI Act conformity assessment.
+          Describe an AI system below to perform an automated EU AI Act conformity assessment using the actual Python engine.
         </p>
       </div>
 
@@ -151,17 +176,19 @@ export default function LLMEvaluator() {
               </div>
             </div>
 
-            <div>
-              <h5 className="font-medium text-gray-800 mb-3">Key Obligations:</h5>
-              <ul className="space-y-2">
-                {result.obligations.map((obs: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <div className="min-w-4 mt-1 text-blue-500">•</div>
-                    {obs}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {result.obligations && result.obligations.length > 0 && (
+              <div>
+                <h5 className="font-medium text-gray-800 mb-3">Key Details:</h5>
+                <ul className="space-y-2">
+                  {result.obligations.map((obs: string, i: number) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                      <div className="min-w-4 mt-1 text-blue-500">•</div>
+                      {obs}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
       </div>

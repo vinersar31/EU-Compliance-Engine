@@ -79,6 +79,11 @@ def audit_codebase(directory: str) -> Dict[str, Any]:
         r"(?i)from\s+langchain\b"
     ])
 
+    # Pre-compile patterns for performance
+    compiled_red = [re.compile(p) for p in red_patterns]
+    compiled_yellow = [re.compile(p) for p in yellow_patterns]
+    compiled_blue = [re.compile(p) for p in blue_patterns]
+
     for root, _, files in os.walk(directory):
         for file in files:
             if not file.endswith('.py'):
@@ -89,20 +94,20 @@ def audit_codebase(directory: str) -> Dict[str, Any]:
                 with open(filepath, 'r', encoding='utf-8') as f:
                     content = f.read()
 
-                    for pattern in red_patterns:
-                        if re.search(pattern, content):
+                    for pattern in compiled_red:
+                        if pattern.search(content):
                             results["FLAG RED"].append(filepath)
                             if "This project is illegal in the EU." not in results["report"]:
                                 results["report"].append("This project is illegal in the EU.")
 
-                    for pattern in yellow_patterns:
-                        if re.search(pattern, content):
+                    for pattern in compiled_yellow:
+                        if pattern.search(content):
                             results["FLAG YELLOW"].append(filepath)
                             if "Annex III High-Risk warning" not in results["report"]:
                                 results["report"].append("Annex III High-Risk warning")
 
-                    for pattern in blue_patterns:
-                        if re.search(pattern, content):
+                    for pattern in compiled_blue:
+                        if pattern.search(content):
                             results["FLAG BLUE"].append(filepath)
                             if "Must label output as AI-Generated" not in results["report"]:
                                 results["report"].append("Must label output as AI-Generated")

@@ -22,7 +22,7 @@ def evaluate_with_llm(solution_description: str, model_name: str = "gemini-2.0-f
     """
     try:
         client = get_client()
-        prompt = f"""
+        system_instruction = """
 You are an expert on the EU AI Act (Regulation (EU) 2024/1689).
 Analyze the following AI system solution description and provide an assessment of its compliance.
 Respond in valid JSON format ONLY, with the following keys:
@@ -31,13 +31,14 @@ Respond in valid JSON format ONLY, with the following keys:
 - "reasoning" (string): A short explanation of your assessment based on the EU AI Act.
 - "suggested_categories" (list of strings): Any relevant categories (e.g. "social_scoring", "biometrics", "employment_hr").
 - "suggested_features" (list of strings): Any relevant features (e.g. "profiling", "interaction_with_humans").
-
-Solution Description:
-{solution_description}
 """
         response = client.models.generate_content(
             model=model_name,
-            contents=prompt,
+            contents=solution_description,
+            config=genai.types.GenerateContentConfig(
+                system_instruction=system_instruction.strip(),
+                response_mime_type="application/json",
+            )
         )
 
         # Attempt to parse the JSON response

@@ -2,3 +2,10 @@ pydantic>=2.0.0
 google-genai>=0.2.0
 fastapi
 uvicorn
+
+# --- EU Compliance Pipeline (GCP, event-driven multi-agent) ---
+google-cloud-documentai>=2.20.0
+google-cloud-bigquery>=3.11.0
+google-cloud-storage>=2.10.0
+# Optional: drop-in replacement for the in-repo ADK-style BaseAgent
+# google-adk>=0.1.0

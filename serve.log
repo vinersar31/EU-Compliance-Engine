@@ -1,0 +1,131 @@
+npm warn exec The following package was not found and will be installed: serve@14.2.6
+ INFO  Accepting connections at http://localhost:3000
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 200 in 315 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/dce0a94ae5847c22.css
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/a6cbfff8230b0019.js
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/8b72cfc40036c827.js
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/44a0e2732f42a9c9.js
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/turbopack-1b6e5d38d3bc7838.js
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/f81ac11fa6af3b6b.js
+ HTTP  3/5/2026 1:21:59 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/15a983677341d48c.js
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:21:59 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 200 in 2 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/dce0a94ae5847c22.css
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/a6cbfff8230b0019.js
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/8b72cfc40036c827.js
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/44a0e2732f42a9c9.js
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/turbopack-1b6e5d38d3bc7838.js
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/f81ac11fa6af3b6b.js
+ HTTP  3/5/2026 1:22:21 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/15a983677341d48c.js
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 8 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:22:21 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 200 in 1 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/dce0a94ae5847c22.css
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 2 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 2 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 2 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/a6cbfff8230b0019.js
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/8b72cfc40036c827.js
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/44a0e2732f42a9c9.js
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/turbopack-1b6e5d38d3bc7838.js
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/f81ac11fa6af3b6b.js
+ HTTP  3/5/2026 1:22:56 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/15a983677341d48c.js
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:22:56 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:14 PM ::1 GET /
+ HTTP  3/5/2026 1:23:14 PM ::1 Returned 200 in 1 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 200 in 1 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/dce0a94ae5847c22.css
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 2 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/a6cbfff8230b0019.js
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/8b72cfc40036c827.js
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/44a0e2732f42a9c9.js
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/turbopack-1b6e5d38d3bc7838.js
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/f81ac11fa6af3b6b.js
+ HTTP  3/5/2026 1:23:31 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/15a983677341d48c.js
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:23:31 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 200 in 1 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 2 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/dce0a94ae5847c22.css
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/a6cbfff8230b0019.js
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/turbopack-1b6e5d38d3bc7838.js
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/8b72cfc40036c827.js
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/44a0e2732f42a9c9.js
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/f81ac11fa6af3b6b.js
+ HTTP  3/5/2026 1:23:51 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/15a983677341d48c.js
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:23:51 PM ::1 Returned 404 in 3 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 200 in 1 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/media/797e433ab948586e-s.p.dbea232f.woff2
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/dce0a94ae5847c22.css
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/media/caa3a2e1cccd8315-s.p.853070df.woff2
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/a6cbfff8230b0019.js
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/8b72cfc40036c827.js
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/44a0e2732f42a9c9.js
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 5 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 6 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/turbopack-1b6e5d38d3bc7838.js
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/f81ac11fa6af3b6b.js
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 7 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 GET /EU-Compliance-Engine/_next/static/chunks/15a983677341d48c.js
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 4 ms
+ HTTP  3/5/2026 1:24:08 PM ::1 Returned 404 in 4 ms
+
+ INFO  Gracefully shutting down. Please wait...
+npm notice
+npm notice New minor version of npm available! 11.7.0 -> 11.11.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+npm notice To update run: npm install -g npm@11.11.0
+npm notice

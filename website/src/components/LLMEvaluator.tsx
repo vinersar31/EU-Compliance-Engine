@@ -3,10 +3,20 @@
 import React, { useState } from 'react';
 import { Bot, AlertTriangle, ShieldCheck, Info } from 'lucide-react';
 
+interface AssessmentResult {
+  riskLevel: string;
+  color: string;
+  bgColor: string;
+  icon: React.ReactNode;
+  flags: string[];
+  summary: string;
+  obligations: string[];
+}
+
 export default function LLMEvaluator() {
   const [description, setDescription] = useState('');
   const [isEvaluating, setIsEvaluating] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<AssessmentResult | null>(null);
 
   const handleEvaluate = async () => {
     if (!description.trim()) return;
@@ -120,10 +130,11 @@ export default function LLMEvaluator() {
       <div className="p-6">
         <div className="mb-6">
           <label htmlFor="ai-description" className="block text-sm font-medium text-gray-700 mb-2">
-            AI System Description
+            AI System Description <span className="text-red-500">*</span>
           </label>
           <textarea
             id="ai-description"
+            aria-required="true"
             rows={4}
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow resize-none text-gray-800 placeholder-gray-400"
             placeholder="e.g., An AI system that filters resumes for job recruitment..."
@@ -135,7 +146,10 @@ export default function LLMEvaluator() {
         <button
           onClick={handleEvaluate}
           disabled={!description.trim() || isEvaluating}
-          className={`w-full py-3 px-4 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2
+          title={!description.trim() ? "Please enter a description" : ""}
+          aria-busy={isEvaluating}
+          aria-live="polite"
+          className={`w-full py-3 px-4 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none focus-visible:ring-blue-500
             ${!description.trim() ? 'bg-gray-300 cursor-not-allowed' :
               isEvaluating ? 'bg-blue-400 cursor-wait' : 'bg-blue-600 hover:bg-blue-700 hover:shadow-md'}`}
         >
@@ -150,7 +164,7 @@ export default function LLMEvaluator() {
         </button>
 
         {result && (
-          <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500" aria-live="polite">
             <h4 className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">Assessment Results</h4>
 
             <div className={`rounded-xl p-5 mb-6 border ${result.bgColor} border-opacity-50`}>
